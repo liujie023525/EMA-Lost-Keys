@@ -227,14 +227,14 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(784, 22);
+            this.barDockControlTop.Size = new System.Drawing.Size(780, 22);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 562);
-            this.barDockControlBottom.Size = new System.Drawing.Size(784, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(780, 0);
             // 
             // barDockControlLeft
             // 
@@ -247,7 +247,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(784, 22);
+            this.barDockControlRight.Location = new System.Drawing.Point(780, 22);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 540);
             // 
             // statusBarStaticItem
@@ -310,7 +310,7 @@
             // mainTableLayoutPanel
             // 
             this.mainTableLayoutPanel.ColumnCount = 1;
-            this.mainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.mainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.mainTableLayoutPanel.Controls.Add(this.toolPanelControl, 0, 0);
             this.mainTableLayoutPanel.Controls.Add(this.resultXtraTabControl, 0, 1);
             this.mainTableLayoutPanel.Controls.Add(this.bottomToolPanelControl, 0, 2);
@@ -321,7 +321,7 @@
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.mainTableLayoutPanel.Size = new System.Drawing.Size(784, 540);
+            this.mainTableLayoutPanel.Size = new System.Drawing.Size(780, 540);
             this.mainTableLayoutPanel.TabIndex = 4;
             // 
             // toolPanelControl
@@ -332,7 +332,7 @@
             this.toolPanelControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolPanelControl.Location = new System.Drawing.Point(3, 3);
             this.toolPanelControl.Name = "toolPanelControl";
-            this.toolPanelControl.Size = new System.Drawing.Size(778, 34);
+            this.toolPanelControl.Size = new System.Drawing.Size(774, 34);
             this.toolPanelControl.TabIndex = 0;
             // 
             // runSimpleButton
@@ -379,7 +379,7 @@
             this.resultXtraTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resultXtraTabControl.Location = new System.Drawing.Point(3, 43);
             this.resultXtraTabControl.Name = "resultXtraTabControl";
-            this.resultXtraTabControl.Size = new System.Drawing.Size(778, 454);
+            this.resultXtraTabControl.Size = new System.Drawing.Size(774, 454);
             this.resultXtraTabControl.TabIndex = 1;
             // 
             // bottomToolPanelControl
@@ -388,7 +388,7 @@
             this.bottomToolPanelControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bottomToolPanelControl.Location = new System.Drawing.Point(3, 503);
             this.bottomToolPanelControl.Name = "bottomToolPanelControl";
-            this.bottomToolPanelControl.Size = new System.Drawing.Size(778, 34);
+            this.bottomToolPanelControl.Size = new System.Drawing.Size(774, 34);
             this.bottomToolPanelControl.TabIndex = 2;
             // 
             // exportResultSimpleButton
@@ -416,7 +416,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 562);
+            this.ClientSize = new System.Drawing.Size(780, 562);
             this.Controls.Add(this.mainTableLayoutPanel);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -424,6 +424,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(796, 600);
             this.Name = "MainXtraForm";
             this.Text = "EMA Lost Keys";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainXtraForm_FormClosing);
@@ -461,7 +462,6 @@
         private DevExpress.XtraBars.BarButtonItem aboutBarButtonItem;
         private System.Windows.Forms.TableLayoutPanel mainTableLayoutPanel;
         private DevExpress.XtraEditors.PanelControl toolPanelControl;
-        private DevExpress.XtraTab.XtraTabControl resultXtraTabControl;
         private DevExpress.XtraEditors.SimpleButton selectOriginalFileSimpleButton;
         private DevExpress.XtraEditors.SimpleButton runSimpleButton;
         private DevExpress.XtraBars.BarButtonItem toolBarButtonItem;
@@ -482,5 +482,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup repositoryItemRadioGroup3;
         private DevExpress.XtraBars.BarButtonItem howToUseBarButtonItem;
         private DevExpress.XtraBars.BarButtonItem gitHubBarButtonItem;
+        private DevExpress.XtraTab.XtraTabControl resultXtraTabControl;
     }
 }
