@@ -172,6 +172,11 @@ namespace Polycom.RMX2000.EMALostKeys
             Process.Start("https://github.com/XinwenCheng/EMA-Lost-Keys/wiki/How-To-Use");
         }
 
+        private void gitHubBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Process.Start("https://github.com/XinwenCheng/EMA-Lost-Keys");
+        }
+
         private void MainXtraForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (this._isProcessing

@@ -33,6 +33,9 @@
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainXtraForm));
             this.defaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.barManager = new DevExpress.XtraBars.BarManager(this.components);
@@ -44,6 +47,7 @@
             this.repositoryItemRadioGroup4 = new DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup();
             this.helpBarSubItem = new DevExpress.XtraBars.BarSubItem();
             this.howToUseBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
+            this.gitHubBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.aboutBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -108,9 +112,10 @@
             this.whiteThemeBarCheckItem,
             this.darkThemeBarCheckItem,
             this.themesBarEditItem,
-            this.howToUseBarButtonItem});
+            this.howToUseBarButtonItem,
+            this.gitHubBarButtonItem});
             this.barManager.MainMenu = this.mainToolBar;
-            this.barManager.MaxItemId = 21;
+            this.barManager.MaxItemId = 22;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemRadioGroup1,
             this.repositoryItemRadioGroup2,
@@ -180,6 +185,7 @@
             this.helpBarSubItem.Id = 1;
             this.helpBarSubItem.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.howToUseBarButtonItem),
+            new DevExpress.XtraBars.LinkPersistInfo(this.gitHubBarButtonItem),
             new DevExpress.XtraBars.LinkPersistInfo(this.aboutBarButtonItem)});
             this.helpBarSubItem.Name = "helpBarSubItem";
             // 
@@ -190,6 +196,23 @@
             this.howToUseBarButtonItem.Id = 20;
             this.howToUseBarButtonItem.Name = "howToUseBarButtonItem";
             this.howToUseBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.howToUseBarButtonItem_ItemClick);
+            // 
+            // gitHubBarButtonItem
+            // 
+            this.gitHubBarButtonItem.Caption = "GitHub ...";
+            this.gitHubBarButtonItem.Glyph = global::Polycom.RMX2000.EMALostKeys.Properties.Resources.GitHub;
+            this.gitHubBarButtonItem.Id = 21;
+            this.gitHubBarButtonItem.Name = "gitHubBarButtonItem";
+            toolTipTitleItem1.Text = "GitHub";
+            toolTipItem1.Appearance.Image = global::Polycom.RMX2000.EMALostKeys.Properties.Resources.GitHubMedium;
+            toolTipItem1.Appearance.Options.UseImage = true;
+            toolTipItem1.Image = global::Polycom.RMX2000.EMALostKeys.Properties.Resources.GitHubMedium;
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "Get source code from GitHub.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.gitHubBarButtonItem.SuperTip = superToolTip1;
+            this.gitHubBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.gitHubBarButtonItem_ItemClick);
             // 
             // aboutBarButtonItem
             // 
@@ -338,15 +361,15 @@
             this.originalFilePathTextEdit.Name = "originalFilePathTextEdit";
             this.originalFilePathTextEdit.Properties.ReadOnly = true;
             this.originalFilePathTextEdit.Size = new System.Drawing.Size(563, 20);
-            toolTipTitleItem1.Text = "Original File Path";
-            toolTipItem1.Appearance.Image = global::Polycom.RMX2000.EMALostKeys.Properties.Resources.table;
-            toolTipItem1.Appearance.Options.UseImage = true;
-            toolTipItem1.Image = global::Polycom.RMX2000.EMALostKeys.Properties.Resources.table;
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Please select original translation file in English here.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.originalFilePathTextEdit.SuperTip = superToolTip1;
+            toolTipTitleItem2.Text = "Original File Path";
+            toolTipItem2.Appearance.Image = global::Polycom.RMX2000.EMALostKeys.Properties.Resources.table;
+            toolTipItem2.Appearance.Options.UseImage = true;
+            toolTipItem2.Image = global::Polycom.RMX2000.EMALostKeys.Properties.Resources.table;
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "Please select original translation file in English here.";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.originalFilePathTextEdit.SuperTip = superToolTip2;
             this.originalFilePathTextEdit.TabIndex = 0;
             this.originalFilePathTextEdit.TabStop = false;
             this.originalFilePathTextEdit.EditValueChanged += new System.EventHandler(this.originalFilePathTextEdit_EditValueChanged);
@@ -458,5 +481,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup repositoryItemRadioGroup4;
         private DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup repositoryItemRadioGroup3;
         private DevExpress.XtraBars.BarButtonItem howToUseBarButtonItem;
+        private DevExpress.XtraBars.BarButtonItem gitHubBarButtonItem;
     }
 }

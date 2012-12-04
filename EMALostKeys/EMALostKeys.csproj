@@ -128,6 +128,8 @@
     <None Include="Resources\PolycomLogo.png" />
     <None Include="Resources\table.png" />
     <None Include="Resources\info.png" />
+    <None Include="Resources\GitHub.png" />
+    <None Include="Resources\GitHubMedium.png" />
     <Content Include="Resources\Key.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
