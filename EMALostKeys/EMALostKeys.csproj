@@ -8,11 +8,26 @@
     <ProjectGuid>{6334042F-8BB7-4727-A804-FCE5DE19CE44}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Polycom.RMX2000.EMALostKeys</RootNamespace>
+    <RootNamespace>Polycom.RMX2000.EMALostKeys.UI</RootNamespace>
     <AssemblyName>EMA Lost Keys</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -34,7 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Polycom.RMX2000.EMALostKeys.Program</StartupObject>
+    <StartupObject>Polycom.RMX2000.EMALostKeys.UI.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Resources\Key.ico</ApplicationIcon>
@@ -66,7 +81,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LanguageHelper.cs" />
     <Compile Include="MainXtraForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,9 +101,6 @@
     <Compile Include="InformationScreen.Designer.cs">
       <DependentUpon>InformationScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="RegistryHelper.cs" />
-    <Compile Include="TranslationException.cs" />
-    <Compile Include="TranslationHelper.cs" />
     <EmbeddedResource Include="MainXtraForm.resx">
       <DependentUpon>MainXtraForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -131,6 +142,34 @@
     <None Include="Resources\GitHub.png" />
     <None Include="Resources\GitHubMedium.png" />
     <Content Include="Resources\Key.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TranslationAnalyzer\TranslationAnalyzer.csproj">
+      <Project>{CD09AA7B-DC8C-4C07-962F-DED78DB4D4B3}</Project>
+      <Name>TranslationAnalyzer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

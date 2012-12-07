@@ -1,4 +1,4 @@
-﻿namespace Polycom.RMX2000.EMALostKeys
+﻿namespace Polycom.RMX2000.EMALostKeys.UI
 {
     partial class InformationScreen
     {
@@ -47,7 +47,7 @@
             // 
             // pictureEdit
             // 
-            this.pictureEdit.EditValue = global::Polycom.RMX2000.EMALostKeys.Properties.Resources.International;
+            this.pictureEdit.EditValue = global::Polycom.RMX2000.EMALostKeys.UI.Properties.Resources.International;
             this.pictureEdit.Location = new System.Drawing.Point(12, 42);
             this.pictureEdit.Name = "pictureEdit";
             this.pictureEdit.Properties.AllowFocused = false;
@@ -60,7 +60,7 @@
             // 
             // logoPictureEdit
             // 
-            this.logoPictureEdit.EditValue = global::Polycom.RMX2000.EMALostKeys.Properties.Resources.PolycomLogoMedium;
+            this.logoPictureEdit.EditValue = global::Polycom.RMX2000.EMALostKeys.UI.Properties.Resources.PolycomLogoMedium;
             this.logoPictureEdit.Location = new System.Drawing.Point(278, 268);
             this.logoPictureEdit.Name = "logoPictureEdit";
             this.logoPictureEdit.Properties.AllowFocused = false;

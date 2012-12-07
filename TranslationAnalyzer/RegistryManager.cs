@@ -3,9 +3,9 @@ using System;
 using Microsoft.Win32;
 #endregion
 
-namespace Polycom.RMX2000.EMALostKeys
+namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
 {
-    internal static class RegistryHelper
+    public static class RegistryManager
     {
         #region Fields and Properties
         private static string _productKey = "EMALostKeys";
@@ -21,7 +21,7 @@ namespace Polycom.RMX2000.EMALostKeys
         #endregion
 
         #region Internal Methods
-        internal static string GetTheme()
+        public static string GetTheme()
         {
             string themeName = DEFAULT_THEME_NAME;
             RegistryKey softwareKey = Registry.LocalMachine.OpenSubKey("SOFTWARE");
@@ -38,7 +38,7 @@ namespace Polycom.RMX2000.EMALostKeys
             return themeName;
         }
 
-        internal static void SetTheme(string themeName)
+        public static void SetTheme(string themeName)
         {
             try
             {

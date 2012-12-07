@@ -1,4 +1,4 @@
-﻿namespace Polycom.RMX2000.EMALostKeys
+﻿namespace Polycom.RMX2000.EMALostKeys.UI
 {
     partial class MainXtraForm
     {
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Polycom.RMX2000.EMALostKeys.InformationScreen), true, true);
+            DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Polycom.RMX2000.EMALostKeys.UI.InformationScreen), true, true);
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
@@ -49,6 +49,7 @@
             this.howToUseBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.gitHubBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.aboutBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
+            this.barAndDockingController = new DevExpress.XtraBars.BarAndDockingController(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -58,6 +59,8 @@
             this.themesBarToolbarsListItem = new DevExpress.XtraBars.BarToolbarsListItem();
             this.whiteThemeBarCheckItem = new DevExpress.XtraBars.BarCheckItem();
             this.darkThemeBarCheckItem = new DevExpress.XtraBars.BarCheckItem();
+            this.selectXMLBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
+            this.selectProjectBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemRadioGroup1 = new DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup();
             this.repositoryItemRadioGroup2 = new DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
@@ -65,15 +68,16 @@
             this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.toolPanelControl = new DevExpress.XtraEditors.PanelControl();
             this.runSimpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.selectOriginalFileSimpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.originalFilePathTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.filePathTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.resultXtraTabControl = new DevExpress.XtraTab.XtraTabControl();
             this.bottomToolPanelControl = new DevExpress.XtraEditors.PanelControl();
             this.exportResultSimpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.selectSimpleButton = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
@@ -81,7 +85,7 @@
             this.mainTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toolPanelControl)).BeginInit();
             this.toolPanelControl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.originalFilePathTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePathTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultXtraTabControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bottomToolPanelControl)).BeginInit();
             this.bottomToolPanelControl.SuspendLayout();
@@ -95,6 +99,7 @@
             // 
             this.barManager.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
             this.mainToolBar});
+            this.barManager.Controller = this.barAndDockingController;
             this.barManager.DockControls.Add(this.barDockControlTop);
             this.barManager.DockControls.Add(this.barDockControlBottom);
             this.barManager.DockControls.Add(this.barDockControlLeft);
@@ -113,9 +118,11 @@
             this.darkThemeBarCheckItem,
             this.themesBarEditItem,
             this.howToUseBarButtonItem,
-            this.gitHubBarButtonItem});
+            this.gitHubBarButtonItem,
+            this.selectXMLBarButtonItem,
+            this.selectProjectBarButtonItem});
             this.barManager.MainMenu = this.mainToolBar;
-            this.barManager.MaxItemId = 22;
+            this.barManager.MaxItemId = 24;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemRadioGroup1,
             this.repositoryItemRadioGroup2,
@@ -148,7 +155,7 @@
             // exitBarButtonItem
             // 
             this.exitBarButtonItem.Caption = "E&xit";
-            this.exitBarButtonItem.Glyph = global::Polycom.RMX2000.EMALostKeys.Properties.Resources.door;
+            this.exitBarButtonItem.Glyph = global::Polycom.RMX2000.EMALostKeys.UI.Properties.Resources.door;
             this.exitBarButtonItem.Id = 3;
             this.exitBarButtonItem.Name = "exitBarButtonItem";
             this.exitBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.exitBarButtonItem_ItemClick);
@@ -192,7 +199,7 @@
             // howToUseBarButtonItem
             // 
             this.howToUseBarButtonItem.Caption = "H&ow To Use ...";
-            this.howToUseBarButtonItem.Glyph = global::Polycom.RMX2000.EMALostKeys.Properties.Resources.help;
+            this.howToUseBarButtonItem.Glyph = global::Polycom.RMX2000.EMALostKeys.UI.Properties.Resources.help;
             this.howToUseBarButtonItem.Id = 20;
             this.howToUseBarButtonItem.Name = "howToUseBarButtonItem";
             this.howToUseBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.howToUseBarButtonItem_ItemClick);
@@ -200,13 +207,13 @@
             // gitHubBarButtonItem
             // 
             this.gitHubBarButtonItem.Caption = "GitHub ...";
-            this.gitHubBarButtonItem.Glyph = global::Polycom.RMX2000.EMALostKeys.Properties.Resources.GitHub;
+            this.gitHubBarButtonItem.Glyph = global::Polycom.RMX2000.EMALostKeys.UI.Properties.Resources.GitHub;
             this.gitHubBarButtonItem.Id = 21;
             this.gitHubBarButtonItem.Name = "gitHubBarButtonItem";
             toolTipTitleItem1.Text = "GitHub";
-            toolTipItem1.Appearance.Image = global::Polycom.RMX2000.EMALostKeys.Properties.Resources.GitHubMedium;
+            toolTipItem1.Appearance.Image = global::Polycom.RMX2000.EMALostKeys.UI.Properties.Resources.GitHubMedium;
             toolTipItem1.Appearance.Options.UseImage = true;
-            toolTipItem1.Image = global::Polycom.RMX2000.EMALostKeys.Properties.Resources.GitHubMedium;
+            toolTipItem1.Image = global::Polycom.RMX2000.EMALostKeys.UI.Properties.Resources.GitHubMedium;
             toolTipItem1.LeftIndent = 6;
             toolTipItem1.Text = "Get source code from GitHub.";
             superToolTip1.Items.Add(toolTipTitleItem1);
@@ -217,10 +224,15 @@
             // aboutBarButtonItem
             // 
             this.aboutBarButtonItem.Caption = "&About";
-            this.aboutBarButtonItem.Glyph = global::Polycom.RMX2000.EMALostKeys.Properties.Resources.info;
+            this.aboutBarButtonItem.Glyph = global::Polycom.RMX2000.EMALostKeys.UI.Properties.Resources.info;
             this.aboutBarButtonItem.Id = 4;
             this.aboutBarButtonItem.Name = "aboutBarButtonItem";
             this.aboutBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.aboutBarButtonItem_ItemClick);
+            // 
+            // barAndDockingController
+            // 
+            this.barAndDockingController.PaintStyleName = "Skin";
+            this.barAndDockingController.PropertiesBar.AllowLinkLighting = false;
             // 
             // barDockControlTop
             // 
@@ -326,9 +338,9 @@
             // 
             // toolPanelControl
             // 
+            this.toolPanelControl.Controls.Add(this.selectSimpleButton);
             this.toolPanelControl.Controls.Add(this.runSimpleButton);
-            this.toolPanelControl.Controls.Add(this.selectOriginalFileSimpleButton);
-            this.toolPanelControl.Controls.Add(this.originalFilePathTextEdit);
+            this.toolPanelControl.Controls.Add(this.filePathTextEdit);
             this.toolPanelControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolPanelControl.Location = new System.Drawing.Point(3, 3);
             this.toolPanelControl.Name = "toolPanelControl";
@@ -345,34 +357,25 @@
             this.runSimpleButton.Text = "Run";
             this.runSimpleButton.Click += new System.EventHandler(this.runSimpleButton_Click);
             // 
-            // selectOriginalFileSimpleButton
+            // filePathTextEdit
             // 
-            this.selectOriginalFileSimpleButton.Location = new System.Drawing.Point(578, 5);
-            this.selectOriginalFileSimpleButton.Name = "selectOriginalFileSimpleButton";
-            this.selectOriginalFileSimpleButton.Size = new System.Drawing.Size(75, 23);
-            this.selectOriginalFileSimpleButton.TabIndex = 1;
-            this.selectOriginalFileSimpleButton.Text = "Select ...";
-            this.selectOriginalFileSimpleButton.Click += new System.EventHandler(this.selectOriginalFileSimpleButton_Click);
-            // 
-            // originalFilePathTextEdit
-            // 
-            this.originalFilePathTextEdit.Location = new System.Drawing.Point(9, 7);
-            this.originalFilePathTextEdit.MenuManager = this.barManager;
-            this.originalFilePathTextEdit.Name = "originalFilePathTextEdit";
-            this.originalFilePathTextEdit.Properties.ReadOnly = true;
-            this.originalFilePathTextEdit.Size = new System.Drawing.Size(563, 20);
-            toolTipTitleItem2.Text = "Original File Path";
-            toolTipItem2.Appearance.Image = global::Polycom.RMX2000.EMALostKeys.Properties.Resources.table;
+            this.filePathTextEdit.Location = new System.Drawing.Point(9, 7);
+            this.filePathTextEdit.MenuManager = this.barManager;
+            this.filePathTextEdit.Name = "filePathTextEdit";
+            this.filePathTextEdit.Properties.ReadOnly = true;
+            this.filePathTextEdit.Size = new System.Drawing.Size(563, 20);
+            toolTipTitleItem2.Text = "File Path";
+            toolTipItem2.Appearance.Image = global::Polycom.RMX2000.EMALostKeys.UI.Properties.Resources.table;
             toolTipItem2.Appearance.Options.UseImage = true;
-            toolTipItem2.Image = global::Polycom.RMX2000.EMALostKeys.Properties.Resources.table;
+            toolTipItem2.Image = global::Polycom.RMX2000.EMALostKeys.UI.Properties.Resources.table;
             toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "Please select original translation file in English here.";
+            toolTipItem2.Text = "Please select translation file in English or EMA UI project file here.";
             superToolTip2.Items.Add(toolTipTitleItem2);
             superToolTip2.Items.Add(toolTipItem2);
-            this.originalFilePathTextEdit.SuperTip = superToolTip2;
-            this.originalFilePathTextEdit.TabIndex = 0;
-            this.originalFilePathTextEdit.TabStop = false;
-            this.originalFilePathTextEdit.EditValueChanged += new System.EventHandler(this.originalFilePathTextEdit_EditValueChanged);
+            this.filePathTextEdit.SuperTip = superToolTip2;
+            this.filePathTextEdit.TabIndex = 0;
+            this.filePathTextEdit.TabStop = false;
+            this.filePathTextEdit.EditValueChanged += new System.EventHandler(this.filePathTextEdit_EditValueChanged);
             // 
             // resultXtraTabControl
             // 
@@ -403,14 +406,24 @@
             // 
             // openFileDialog
             // 
-            this.openFileDialog.Filter = "XML File|*.xml";
+            this.openFileDialog.Filter = "XML File|*.xml|UI Project|*.csproj";
+            this.openFileDialog.FilterIndex = 0;
             this.openFileDialog.ReadOnlyChecked = true;
-            this.openFileDialog.Title = "Select a translation file ...";
+            this.openFileDialog.Title = "Select ...";
             // 
             // saveFileDialog
             // 
             this.saveFileDialog.Filter = "Text|*.txt";
             this.saveFileDialog.Title = "Save to ...";
+            // 
+            // selectSimpleButton
+            // 
+            this.selectSimpleButton.Location = new System.Drawing.Point(578, 5);
+            this.selectSimpleButton.Name = "selectSimpleButton";
+            this.selectSimpleButton.Size = new System.Drawing.Size(75, 23);
+            this.selectSimpleButton.TabIndex = 1;
+            this.selectSimpleButton.Text = "Select ...";
+            this.selectSimpleButton.Click += new System.EventHandler(this.selectSimpleButton_Click);
             // 
             // MainXtraForm
             // 
@@ -431,6 +444,7 @@
             this.Load += new System.EventHandler(this.MainXtraForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
@@ -438,7 +452,7 @@
             this.mainTableLayoutPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.toolPanelControl)).EndInit();
             this.toolPanelControl.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.originalFilePathTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePathTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultXtraTabControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bottomToolPanelControl)).EndInit();
             this.bottomToolPanelControl.ResumeLayout(false);
@@ -462,14 +476,13 @@
         private DevExpress.XtraBars.BarButtonItem aboutBarButtonItem;
         private System.Windows.Forms.TableLayoutPanel mainTableLayoutPanel;
         private DevExpress.XtraEditors.PanelControl toolPanelControl;
-        private DevExpress.XtraEditors.SimpleButton selectOriginalFileSimpleButton;
         private DevExpress.XtraEditors.SimpleButton runSimpleButton;
         private DevExpress.XtraBars.BarButtonItem toolBarButtonItem;
         private DevExpress.XtraBars.BarSubItem toolsBarSubItem;
         private DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup repositoryItemRadioGroup1;
         private DevExpress.XtraBars.BarToolbarsListItem themesBarToolbarsListItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private DevExpress.XtraEditors.TextEdit originalFilePathTextEdit;
+        private DevExpress.XtraEditors.TextEdit filePathTextEdit;
         private DevExpress.XtraEditors.PanelControl bottomToolPanelControl;
         private DevExpress.XtraEditors.SimpleButton exportResultSimpleButton;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
@@ -483,5 +496,9 @@
         private DevExpress.XtraBars.BarButtonItem howToUseBarButtonItem;
         private DevExpress.XtraBars.BarButtonItem gitHubBarButtonItem;
         private DevExpress.XtraTab.XtraTabControl resultXtraTabControl;
+        private DevExpress.XtraBars.BarAndDockingController barAndDockingController;
+        private DevExpress.XtraBars.BarButtonItem selectXMLBarButtonItem;
+        private DevExpress.XtraBars.BarButtonItem selectProjectBarButtonItem;
+        private DevExpress.XtraEditors.SimpleButton selectSimpleButton;
     }
 }

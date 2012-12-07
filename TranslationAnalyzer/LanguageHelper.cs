@@ -1,9 +1,10 @@
 ﻿#region References
 #endregion
 
-namespace Polycom.RMX2000.EMALostKeys
+using System;
+namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
 {
-    internal enum LanguageNames
+    public enum LanguageNames
     {
         English = 0,
         ChineseSimplified,
@@ -20,7 +21,13 @@ namespace Polycom.RMX2000.EMALostKeys
         Turkish
     }
 
-    internal static class LanguageHelper
+    public enum AnalyzeModes
+    {
+        TranslationFile = 0,
+        UIProject
+    }
+
+    public static class LanguageHelper
     {
         #region Fields and Properties
         #endregion
@@ -32,7 +39,21 @@ namespace Polycom.RMX2000.EMALostKeys
         #endregion
 
         #region Internal Methods
-        internal static string GetLanguageDisplayName(LanguageNames languageName)
+        public static string GetLanguageDisplayName(string languageName)
+        {
+            LanguageNames language = LanguageNames.English;
+
+            if (Enum.TryParse<LanguageNames>(languageName, out language))
+            {
+                return GetLanguageDisplayName(language);
+            }
+            else
+            {
+                return languageName;
+            }
+        }
+
+        public static string GetLanguageDisplayName(LanguageNames languageName)
         {
             switch (languageName)
             {

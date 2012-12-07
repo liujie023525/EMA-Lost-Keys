@@ -5,12 +5,12 @@ using System.IO;
 using System.Xml;
 #endregion
 
-namespace Polycom.RMX2000.EMALostKeys
+namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
 {
-    internal static class TranslationHelper
+    public static class TranslationManager
     {
         #region Fields and Properties
-        internal static readonly string[] TranslationNodeKeyLevels = new string[] { "StringConfiguration", "Translations", "Language", "String" };
+        public static readonly string[] TranslationNodeKeyLevels = new string[] { "StringConfiguration", "Translations", "Language", "String" };
         #endregion
 
         #region Constructors
@@ -20,7 +20,7 @@ namespace Polycom.RMX2000.EMALostKeys
         #endregion
 
         #region Internal Methods
-        internal static bool ValidateTranslationFile(string filePath)
+        public static bool ValidateTranslationFile(string filePath)
         {
             try
             {
@@ -84,7 +84,7 @@ namespace Polycom.RMX2000.EMALostKeys
             }
         }
 
-        internal static List<string> GetMissingKeys(string englishFilePath, LanguageNames languageName)
+        public static List<string> GetMissingKeys(string englishFilePath, LanguageNames languageName)
         {
             if (languageName == LanguageNames.English)
             {
@@ -123,13 +123,8 @@ namespace Polycom.RMX2000.EMALostKeys
 
             return missingKeys;
         }
-        #endregion
 
-        #region Protected Methods
-        #endregion
-
-        #region Private Methods
-        private static List<string> GetTranslationKeys(string filePath)
+        public static List<string> GetTranslationKeys(string filePath)
         {
             if (!ValidateTranslationFile(filePath))
             {
@@ -154,8 +149,14 @@ namespace Polycom.RMX2000.EMALostKeys
                 return keys;
             }
         }
+        #endregion
 
-        internal static void Export(Dictionary<LanguageNames, List<string>> missingKeyDictionary, string filePath)
+        #region Protected Methods
+        #endregion
+
+        #region Private Methods
+
+        public static void Export(Dictionary<string, List<string>> missingKeyDictionary, string filePath)
         {
             try
             {
@@ -173,9 +174,9 @@ namespace Polycom.RMX2000.EMALostKeys
                 {
                 }
 
-                foreach (KeyValuePair<LanguageNames, List<string>> missingKeys in missingKeyDictionary)
+                foreach (KeyValuePair<string, List<string>> missingKeys in missingKeyDictionary)
                 {
-                    if (missingKeys.Key == LanguageNames.English
+                    if (missingKeys.Key.Equals(LanguageNames.English.ToString())
                         || missingKeys.Value == null
                         || missingKeys.Value.Count == 0)
                     {

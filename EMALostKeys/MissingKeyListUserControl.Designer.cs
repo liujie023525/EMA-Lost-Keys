@@ -1,4 +1,4 @@
-﻿namespace Polycom.RMX2000.EMALostKeys
+﻿namespace Polycom.RMX2000.EMALostKeys.UI
 {
     partial class MissingKeyListUserControl
     {

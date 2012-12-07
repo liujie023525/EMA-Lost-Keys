@@ -2,9 +2,9 @@
 using System;
 #endregion
 
-namespace Polycom.RMX2000.EMALostKeys
+namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
 {
-    internal class TranslationException : Exception
+    public class TranslationException : Exception
     {
         #region Fields and Properties
         #endregion
