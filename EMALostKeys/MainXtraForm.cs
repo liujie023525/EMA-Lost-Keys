@@ -148,7 +148,12 @@ namespace Polycom.RMX2000.EMALostKeys.UI
         {
             this.openFileDialog.FileName = String.Empty;
 
-            if (this.openFileDialog.ShowDialog() == DialogResult.OK)
+            if (this.openFileDialog.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            try
             {
                 this.filePathTextEdit.Text = this.openFileDialog.FileName;
 
@@ -165,6 +170,10 @@ namespace Polycom.RMX2000.EMALostKeys.UI
 
                     ProjectManager.InitializeEnglishKeys(fileInfo.Directory.Parent.FullName);
                 }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
