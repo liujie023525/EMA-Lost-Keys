@@ -210,7 +210,7 @@ namespace Polycom.RMX2000.EMALostKeys.UI
                 this.saveFileDialog.FileName = String.Empty;
                 DialogResult dialogResult = this.saveFileDialog.ShowDialog();
 
-                if (dialogResult != System.Windows.Forms.DialogResult.OK)
+                if (dialogResult != DialogResult.OK)
                 {
                     return;
                 }
@@ -219,7 +219,7 @@ namespace Polycom.RMX2000.EMALostKeys.UI
 
                 TranslationManager.Export(this._missingKeyDictionary, filePath);
 
-                if (XtraMessageBox.Show("Export succeed, do you want to open it?", "Export", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                if (XtraMessageBox.Show("Export succeed, do you want to open it?", "Export", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Process.Start(filePath);
                 }
@@ -256,7 +256,7 @@ namespace Polycom.RMX2000.EMALostKeys.UI
         private void MainXtraForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (this._isProcessing
-                && XtraMessageBox.Show("Application is processing task, are you sure to exit?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
+                && XtraMessageBox.Show("Application is processing task, are you sure to exit?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
                 e.Cancel = true;
             }
