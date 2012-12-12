@@ -37,7 +37,7 @@
             this.listBoxControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxControl.Location = new System.Drawing.Point(0, 0);
             this.listBoxControl.Name = "listBoxControl";
-            this.listBoxControl.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.listBoxControl.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBoxControl.Size = new System.Drawing.Size(602, 335);
             this.listBoxControl.TabIndex = 0;
             // 

@@ -11,6 +11,7 @@ namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
     {
         #region Fields and Properties
         private static List<List<string>> _englishKeys = null;
+        private static List<char> _englishChars = new List<char>("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
         #endregion
 
         #region Constructors
@@ -62,14 +63,23 @@ namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
                     {
                         content = codeLine.Split("=".ToCharArray())[1].TrimEnd(";".ToCharArray());
 
-                        if (!content.Contains("\""))
+                        if (String.IsNullOrEmpty(content)
+                            || content.Trim().Equals("\"\"", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            continue;
+                        }
+                        else if (!content.Contains("\""))
                         {
                             //TODO
 
                             continue;
                         }
+                        else if (!ContainEnglishCharacter(content))
+                        {
+                            continue;
+                        }
 
-                        if (!ValidateKeyExist(content))
+                        if (!ValidateKeyExist(content) && !missingKeys.Contains(content))
                         {
                             missingKeys.Add(content);
                         }
@@ -82,7 +92,7 @@ namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
 
         public static void InitializeEnglishKeys(string emaDirectoryName)
         {
-            string languageFoldPath = String.Format("{0}\\EMA.UI\\Configuration\\Languages\\English", emaDirectoryName);
+            string languageFoldPath = String.Format("{0}\\EMA.UI\\Configuration\\Languages\\English", emaDirectoryName).Replace("\\EMA.UI\\EMA.UI\\", "\\EMA.UI\\");
 
             _englishKeys = new List<List<string>>();
 
@@ -128,14 +138,33 @@ namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
                 throw new TranslationException("English keys wasn't initialized.");
             }
 
+            key = key.TrimEnd("; ".ToCharArray()).Replace("\"", String.Empty).Trim();
+
             foreach (List<string> englishKeyList in _englishKeys)
             {
-                foreach (string englishKey in englishKeyList)
+                if (englishKeyList.Contains(key))
                 {
-                    if (key.Equals(englishKey))
-                    {
-                        return true;
-                    }
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private static bool ContainEnglishCharacter(string content)
+        {
+            if (String.IsNullOrEmpty(content) || String.IsNullOrEmpty(content.Trim()))
+            {
+                return false;
+            }
+
+            content = content.ToUpper();
+
+            foreach (char c in content)
+            {
+                if (_englishChars.Contains(c))
+                {
+                    return true;
                 }
             }
 

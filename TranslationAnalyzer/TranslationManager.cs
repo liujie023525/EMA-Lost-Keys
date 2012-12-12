@@ -30,7 +30,7 @@ namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
                 }
                 else if (!File.Exists(filePath))
                 {
-                    throw new TranslationException("File doesn't exist, please select one firstly.");
+                    throw new TranslationException(String.Format("{0} doesn't exist, please select one firstly.", filePath));
                 }
 
                 FileInfo file = new FileInfo(filePath);
@@ -142,7 +142,7 @@ namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
                         && reader.AttributeCount == 2
                         && !String.IsNullOrEmpty(reader[0]))
                     {
-                        keys.Add(reader[0]);
+                        keys.Add(reader[0].Trim());
                     }
                 }
 
