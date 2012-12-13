@@ -61,7 +61,7 @@ namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
 
                     if (codeLine.Contains("UIManager.TranslationManager.GetTranslation")
                         || !codeLine.Replace(" ", String.Empty).Contains(".Text=")
-                        || codeLine.TrimEnd().StartsWith("//"))
+                        || codeLine.TrimStart(" \t".ToCharArray()).StartsWith("//"))
                     {
                         continue;
                     }
@@ -93,7 +93,7 @@ namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
                     content = content.TrimEnd("; \t".ToCharArray());
 
                     if (!ValidateKeyExist(content)
-                        && !missingKeys.Contains(content)
+                        && !missingKeys.Contains(content.Trim())
                         && !_allowedKeys.Contains(content.Trim().TrimStart("\"".ToCharArray()).TrimEnd("\"".ToCharArray())))
                     {
                         missingKeys.Add(content.Trim());
