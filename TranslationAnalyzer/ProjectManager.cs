@@ -55,42 +55,41 @@ namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
                 {
                     codeLine = reader.ReadLine();
 
-                    if (codeLine.Contains("UIManager.TranslationManager.GetTranslation"))
+                    if (codeLine.Contains("UIManager.TranslationManager.GetTranslation")
+                        || !codeLine.Replace(" ", String.Empty).Contains(".Text="))
                     {
                         continue;
                     }
-                    else if (codeLine.Replace(" ", String.Empty).Contains(".Text="))
+
+                    content = codeLine.Split("=".ToCharArray())[1].TrimEnd(";".ToCharArray());
+
+                    if (String.IsNullOrEmpty(content)
+                        || content.Trim().Equals("\"\"", StringComparison.InvariantCultureIgnoreCase))
                     {
-                        content = codeLine.Split("=".ToCharArray())[1].TrimEnd(";".ToCharArray());
+                        continue;
+                    }
 
-                        if (String.IsNullOrEmpty(content)
-                            || content.Trim().Equals("\"\"", StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            continue;
-                        }
+                    if (!content.Trim().StartsWith("\"") && content.Contains("\""))
+                    {
+                        content = content.Substring(content.IndexOf('\"')).Substring(0, content.Substring(content.IndexOf('\"')).LastIndexOf('\"') + 1);
+                    }
 
-                        if (!content.Trim().StartsWith("\"") && content.Contains("\""))
-                        {
-                            content = content.Substring(content.IndexOf('\"')).Substring(0, content.Substring(content.IndexOf('\"')).LastIndexOf('\"') + 1);
-                        }
+                    if (!content.Contains("\"") || content.Contains("+"))
+                    {
+                        //TODO
 
-                        if (!content.Contains("\""))
-                        {
-                            //TODO
+                        continue;
+                    }
+                    else if (!ContainEnglishCharacter(content))
+                    {
+                        continue;
+                    }
 
-                            continue;
-                        }
-                        else if (!ContainEnglishCharacter(content))
-                        {
-                            continue;
-                        }
+                    content = content.TrimEnd("; \t".ToCharArray());
 
-                        content = content.TrimEnd("; \t".ToCharArray());
-
-                        if (!ValidateKeyExist(content) && !missingKeys.Contains(content))
-                        {
-                            missingKeys.Add(content);
-                        }
+                    if (!ValidateKeyExist(content) && !missingKeys.Contains(content))
+                    {
+                        missingKeys.Add(content.Trim());
                     }
                 }
 
