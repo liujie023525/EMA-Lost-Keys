@@ -113,6 +113,8 @@ namespace Polycom.RMX2000.EMALostKeys.UI
 
                     this.resultXtraTabControl.TabPages.Add(tabPage);
                 }
+
+                this.alertControl.Show(this, new DevExpress.XtraBars.Alerter.AlertInfo("Notice", "Analyze finished."));
             }
             else
             {
@@ -141,12 +143,12 @@ namespace Polycom.RMX2000.EMALostKeys.UI
 
         private void filePathTextEdit_EditValueChanged(object sender, System.EventArgs e)
         {
-            this.runSimpleButton.Enabled = !String.IsNullOrEmpty(this.filePathTextEdit.Text);
+            this.analyzeSimpleButton.Enabled = !String.IsNullOrEmpty(this.filePathTextEdit.Text);
         }
 
         private void selectSimpleButton_Click(object sender, EventArgs e)
         {
-            this.openFileDialog.FileName = String.Empty;
+            this.openFileDialog.FileName = this.filePathTextEdit.Text.Trim();
 
             if (this.openFileDialog.ShowDialog() != DialogResult.OK)
             {
@@ -177,7 +179,7 @@ namespace Polycom.RMX2000.EMALostKeys.UI
             }
         }
 
-        private void runSimpleButton_Click(object sender, EventArgs e)
+        private void analyzeSimpleButton_Click(object sender, EventArgs e)
         {
             try
             {
@@ -219,7 +221,7 @@ namespace Polycom.RMX2000.EMALostKeys.UI
 
                 TranslationManager.Export(this._missingKeyDictionary, filePath);
 
-                if (XtraMessageBox.Show("Export succeed, do you want to open it?", "Export", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (XtraMessageBox.Show("Export succeed, do you want to open it?", "Export", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
                     Process.Start(filePath);
                 }

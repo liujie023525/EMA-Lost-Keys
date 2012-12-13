@@ -68,7 +68,13 @@ namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
                         {
                             continue;
                         }
-                        else if (!content.Contains("\""))
+
+                        if (!content.Trim().StartsWith("\"") && content.Contains("\""))
+                        {
+                            content = content.Substring(content.IndexOf('\"')).Substring(0, content.Substring(content.IndexOf('\"')).LastIndexOf('\"') + 1);
+                        }
+
+                        if (!content.Contains("\""))
                         {
                             //TODO
 
@@ -78,6 +84,8 @@ namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
                         {
                             continue;
                         }
+
+                        content = content.TrimEnd("; \t".ToCharArray());
 
                         if (!ValidateKeyExist(content) && !missingKeys.Contains(content))
                         {
@@ -138,7 +146,7 @@ namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
                 throw new TranslationException("English keys wasn't initialized.");
             }
 
-            key = key.TrimEnd("; ".ToCharArray()).Replace("\"", String.Empty).Trim();
+            key = key.TrimEnd("; \t".ToCharArray()).Replace("\"", String.Empty).Trim();
 
             foreach (List<string> englishKeyList in _englishKeys)
             {

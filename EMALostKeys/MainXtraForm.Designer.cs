@@ -67,14 +67,15 @@
             this.repositoryItemRadioGroup3 = new DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup();
             this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.toolPanelControl = new DevExpress.XtraEditors.PanelControl();
-            this.runSimpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.selectSimpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.analyzeSimpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.filePathTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.resultXtraTabControl = new DevExpress.XtraTab.XtraTabControl();
             this.bottomToolPanelControl = new DevExpress.XtraEditors.PanelControl();
             this.exportResultSimpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.selectSimpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.alertControl = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController)).BeginInit();
@@ -122,7 +123,7 @@
             this.selectXMLBarButtonItem,
             this.selectProjectBarButtonItem});
             this.barManager.MainMenu = this.mainToolBar;
-            this.barManager.MaxItemId = 24;
+            this.barManager.MaxItemId = 26;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemRadioGroup1,
             this.repositoryItemRadioGroup2,
@@ -292,6 +293,16 @@
             this.darkThemeBarCheckItem.Id = 16;
             this.darkThemeBarCheckItem.Name = "darkThemeBarCheckItem";
             // 
+            // selectXMLBarButtonItem
+            // 
+            this.selectXMLBarButtonItem.Id = 24;
+            this.selectXMLBarButtonItem.Name = "selectXMLBarButtonItem";
+            // 
+            // selectProjectBarButtonItem
+            // 
+            this.selectProjectBarButtonItem.Id = 25;
+            this.selectProjectBarButtonItem.Name = "selectProjectBarButtonItem";
+            // 
             // repositoryItemRadioGroup1
             // 
             this.repositoryItemRadioGroup1.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
@@ -339,7 +350,7 @@
             // toolPanelControl
             // 
             this.toolPanelControl.Controls.Add(this.selectSimpleButton);
-            this.toolPanelControl.Controls.Add(this.runSimpleButton);
+            this.toolPanelControl.Controls.Add(this.analyzeSimpleButton);
             this.toolPanelControl.Controls.Add(this.filePathTextEdit);
             this.toolPanelControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolPanelControl.Location = new System.Drawing.Point(3, 3);
@@ -347,15 +358,24 @@
             this.toolPanelControl.Size = new System.Drawing.Size(774, 34);
             this.toolPanelControl.TabIndex = 0;
             // 
-            // runSimpleButton
+            // selectSimpleButton
             // 
-            this.runSimpleButton.Enabled = false;
-            this.runSimpleButton.Location = new System.Drawing.Point(659, 5);
-            this.runSimpleButton.Name = "runSimpleButton";
-            this.runSimpleButton.Size = new System.Drawing.Size(75, 23);
-            this.runSimpleButton.TabIndex = 2;
-            this.runSimpleButton.Text = "Run";
-            this.runSimpleButton.Click += new System.EventHandler(this.runSimpleButton_Click);
+            this.selectSimpleButton.Location = new System.Drawing.Point(578, 5);
+            this.selectSimpleButton.Name = "selectSimpleButton";
+            this.selectSimpleButton.Size = new System.Drawing.Size(75, 23);
+            this.selectSimpleButton.TabIndex = 1;
+            this.selectSimpleButton.Text = "Select ...";
+            this.selectSimpleButton.Click += new System.EventHandler(this.selectSimpleButton_Click);
+            // 
+            // analyzeSimpleButton
+            // 
+            this.analyzeSimpleButton.Enabled = false;
+            this.analyzeSimpleButton.Location = new System.Drawing.Point(659, 5);
+            this.analyzeSimpleButton.Name = "analyzeSimpleButton";
+            this.analyzeSimpleButton.Size = new System.Drawing.Size(75, 23);
+            this.analyzeSimpleButton.TabIndex = 2;
+            this.analyzeSimpleButton.Text = "Analyze";
+            this.analyzeSimpleButton.Click += new System.EventHandler(this.analyzeSimpleButton_Click);
             // 
             // filePathTextEdit
             // 
@@ -416,14 +436,9 @@
             this.saveFileDialog.Filter = "Text|*.txt";
             this.saveFileDialog.Title = "Save to ...";
             // 
-            // selectSimpleButton
+            // alertControl
             // 
-            this.selectSimpleButton.Location = new System.Drawing.Point(578, 5);
-            this.selectSimpleButton.Name = "selectSimpleButton";
-            this.selectSimpleButton.Size = new System.Drawing.Size(75, 23);
-            this.selectSimpleButton.TabIndex = 1;
-            this.selectSimpleButton.Text = "Select ...";
-            this.selectSimpleButton.Click += new System.EventHandler(this.selectSimpleButton_Click);
+            this.alertControl.AutoFormDelay = 3000;
             // 
             // MainXtraForm
             // 
@@ -476,7 +491,7 @@
         private DevExpress.XtraBars.BarButtonItem aboutBarButtonItem;
         private System.Windows.Forms.TableLayoutPanel mainTableLayoutPanel;
         private DevExpress.XtraEditors.PanelControl toolPanelControl;
-        private DevExpress.XtraEditors.SimpleButton runSimpleButton;
+        private DevExpress.XtraEditors.SimpleButton analyzeSimpleButton;
         private DevExpress.XtraBars.BarButtonItem toolBarButtonItem;
         private DevExpress.XtraBars.BarSubItem toolsBarSubItem;
         private DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup repositoryItemRadioGroup1;
@@ -500,5 +515,6 @@
         private DevExpress.XtraBars.BarButtonItem selectXMLBarButtonItem;
         private DevExpress.XtraBars.BarButtonItem selectProjectBarButtonItem;
         private DevExpress.XtraEditors.SimpleButton selectSimpleButton;
+        private DevExpress.XtraBars.Alerter.AlertControl alertControl;
     }
 }
