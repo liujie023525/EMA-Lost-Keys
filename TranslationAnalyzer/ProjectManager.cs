@@ -60,7 +60,8 @@ namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
                     codeLine = reader.ReadLine();
 
                     if (codeLine.Contains("UIManager.TranslationManager.GetTranslation")
-                        || !codeLine.Replace(" ", String.Empty).Contains(".Text="))
+                        || !codeLine.Replace(" ", String.Empty).Contains(".Text=")
+                        || codeLine.TrimEnd().StartsWith("//"))
                     {
                         continue;
                     }
