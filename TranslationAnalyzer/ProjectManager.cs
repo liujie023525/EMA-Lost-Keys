@@ -12,6 +12,7 @@ namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
         #region Fields and Properties
         private static List<List<string>> _englishKeys = null;
         private static List<char> _englishChars = new List<char>("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+        private static List<string> _allowedKeys = null;
         #endregion
 
         #region Constructors
@@ -32,7 +33,10 @@ namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
             {
                 while (reader.Read())
                 {
-                    if (reader.NodeType == XmlNodeType.Element && reader.Name.Equals("Compile") && reader.AttributeCount >= 1)
+                    if (reader.NodeType == XmlNodeType.Element
+                        && reader.Name.Equals("Compile")
+                        && reader.AttributeCount >= 1
+                        && !reader[0].Contains(".designer.cs"))
                     {
                         csFiles.Add(String.Format("{0}\\{1}", directoryName, reader[0]));
                     }
@@ -87,7 +91,9 @@ namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
 
                     content = content.TrimEnd("; \t".ToCharArray());
 
-                    if (!ValidateKeyExist(content) && !missingKeys.Contains(content))
+                    if (!ValidateKeyExist(content)
+                        && !missingKeys.Contains(content)
+                        && !_allowedKeys.Contains(content.Trim().TrimStart("\"".ToCharArray()).TrimEnd("\"".ToCharArray())))
                     {
                         missingKeys.Add(content.Trim());
                     }
@@ -107,6 +113,30 @@ namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
             _englishKeys.Add(TranslationManager.GetTranslationKeys(languageFoldPath + "\\EnumConfigSetStringsEnglish.xml"));
             _englishKeys.Add(TranslationManager.GetTranslationKeys(languageFoldPath + "\\InternalConfigSetStringsEnglish.xml"));
             _englishKeys.Add(TranslationManager.GetTranslationKeys(languageFoldPath + "\\MessageDialogStringsEnglish.xml"));
+        }
+
+        public static void InitializeAllowedKeys(string emaDirectoryName)
+        {
+            string allowedKeyFilePath = String.Format("{0}\\EMA.UI\\Configuration\\AllowdedStrings.xml", emaDirectoryName).Replace("\\EMA.UI\\EMA.UI\\", "\\EMA.UI\\");
+
+            using (XmlReader reader = XmlReader.Create(allowedKeyFilePath))
+            {
+                _allowedKeys = new List<string>();
+
+                while (reader.Read())
+                {
+                    if (reader.NodeType == XmlNodeType.Element
+                        && reader.Name.Equals("LegalString", StringComparison.InvariantCulture)
+                        && reader.AttributeCount == 1
+                        && !String.IsNullOrEmpty(reader[0])
+                        && !_allowedKeys.Contains(reader[0]))
+                    {
+                        _allowedKeys.Add(reader[0].Trim());
+                    }
+                }
+
+                _allowedKeys.Sort();
+            }
         }
         #endregion
 

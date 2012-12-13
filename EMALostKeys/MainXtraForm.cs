@@ -170,7 +170,10 @@ namespace Polycom.RMX2000.EMALostKeys.UI
                 {
                     this._currentAnalyzeMode = AnalyzeModes.UIProject;
 
-                    ProjectManager.InitializeEnglishKeys(fileInfo.Directory.Parent.FullName);
+                    string fullName = fileInfo.Directory.Parent.FullName;
+
+                    ProjectManager.InitializeEnglishKeys(fullName);
+                    ProjectManager.InitializeAllowedKeys(fullName);
                 }
             }
             catch (Exception ex)
