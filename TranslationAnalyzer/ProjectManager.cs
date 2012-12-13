@@ -36,7 +36,7 @@ namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
                     if (reader.NodeType == XmlNodeType.Element
                         && reader.Name.Equals("Compile")
                         && reader.AttributeCount >= 1
-                        && !reader[0].Contains(".designer.cs"))
+                        && !reader[0].ToLower().Contains(".designer.cs"))
                     {
                         csFiles.Add(String.Format("{0}\\{1}", directoryName, reader[0]));
                     }
@@ -67,6 +67,11 @@ namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
                     }
 
                     content = codeLine.Split("=".ToCharArray())[1].TrimEnd(";".ToCharArray());
+
+                    if (content.Contains("//"))
+                    {
+                        content = content.Split("//".ToCharArray())[0];
+                    }
 
                     if (String.IsNullOrEmpty(content)
                         || content.Trim().Equals("\"\"", StringComparison.InvariantCultureIgnoreCase))
