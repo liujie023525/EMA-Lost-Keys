@@ -141,9 +141,10 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.fileBarSubItem),
             new DevExpress.XtraBars.LinkPersistInfo(this.toolsBarSubItem),
             new DevExpress.XtraBars.LinkPersistInfo(this.helpBarSubItem)});
+            this.mainToolBar.OptionsBar.AllowQuickCustomization = false;
+            this.mainToolBar.OptionsBar.DrawDragBorder = false;
             this.mainToolBar.OptionsBar.MultiLine = true;
             this.mainToolBar.OptionsBar.UseWholeRow = true;
-            this.mainToolBar.Text = "Custom 2";
             // 
             // fileBarSubItem
             // 
@@ -419,9 +420,9 @@
             this.exportResultSimpleButton.Enabled = false;
             this.exportResultSimpleButton.Location = new System.Drawing.Point(9, 5);
             this.exportResultSimpleButton.Name = "exportResultSimpleButton";
-            this.exportResultSimpleButton.Size = new System.Drawing.Size(75, 23);
+            this.exportResultSimpleButton.Size = new System.Drawing.Size(100, 23);
             this.exportResultSimpleButton.TabIndex = 0;
-            this.exportResultSimpleButton.Text = "Export ...";
+            this.exportResultSimpleButton.Text = "Export All ...";
             this.exportResultSimpleButton.Click += new System.EventHandler(this.exportResultSimpleButton_Click);
             // 
             // openFileDialog
