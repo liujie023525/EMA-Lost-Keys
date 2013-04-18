@@ -5,7 +5,7 @@ using System.IO;
 using System.Xml;
 #endregion
 
-namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
+namespace Polycom.RMX2000.TranslationManager.TranslationAnalyzer 
 {
     public static class ProjectManager
     {
@@ -115,10 +115,10 @@ namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
 
             _englishKeys = new List<List<string>>();
 
-            _englishKeys.Add(TranslationManager.GetTranslationKeys(languageFoldPath + "\\DialogsStringsEnglish.xml"));
-            _englishKeys.Add(TranslationManager.GetTranslationKeys(languageFoldPath + "\\EnumConfigSetStringsEnglish.xml"));
-            _englishKeys.Add(TranslationManager.GetTranslationKeys(languageFoldPath + "\\InternalConfigSetStringsEnglish.xml"));
-            _englishKeys.Add(TranslationManager.GetTranslationKeys(languageFoldPath + "\\MessageDialogStringsEnglish.xml"));
+            _englishKeys.Add(TranslateManager.GetTranslationKeys(languageFoldPath + "\\DialogsStringsEnglish.xml"));
+            _englishKeys.Add(TranslateManager.GetTranslationKeys(languageFoldPath + "\\EnumConfigSetStringsEnglish.xml"));
+            _englishKeys.Add(TranslateManager.GetTranslationKeys(languageFoldPath + "\\InternalConfigSetStringsEnglish.xml"));
+            _englishKeys.Add(TranslateManager.GetTranslationKeys(languageFoldPath + "\\MessageDialogStringsEnglish.xml"));
         }
 
         public static void InitializeAllowedKeys(string emaDirectoryName)

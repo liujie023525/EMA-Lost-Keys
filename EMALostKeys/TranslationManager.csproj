@@ -8,8 +8,8 @@
     <ProjectGuid>{6334042F-8BB7-4727-A804-FCE5DE19CE44}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Polycom.RMX2000.EMALostKeys.UI</RootNamespace>
-    <AssemblyName>EMA Lost Keys</AssemblyName>
+    <RootNamespace>Polycom.RMX2000.TranslationManager.UI</RootNamespace>
+    <AssemblyName>Translation Manager</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -49,7 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Polycom.RMX2000.EMALostKeys.UI.Program</StartupObject>
+    <StartupObject>Polycom.RMX2000.TranslationManager.UI.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Resources\Key.ico</ApplicationIcon>

@@ -2,7 +2,7 @@
 using System;
 #endregion
 
-namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
+namespace Polycom.RMX2000.TranslationManager.TranslationAnalyzer 
 {
     public class TranslationException : Exception
     {

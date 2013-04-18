@@ -4,7 +4,7 @@ using DevExpress.XtraSplashScreen;
 using System.Windows.Forms;
 #endregion
 
-namespace Polycom.RMX2000.EMALostKeys.UI
+namespace Polycom.RMX2000.TranslationManager.UI
 {
     public partial class InformationScreen : SplashScreen
     {

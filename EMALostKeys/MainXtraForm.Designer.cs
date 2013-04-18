@@ -1,4 +1,4 @@
-﻿namespace Polycom.RMX2000.EMALostKeys.UI
+﻿namespace Polycom.RMX2000.TranslationManager.UI
 {
     partial class MainXtraForm
     {
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Polycom.RMX2000.EMALostKeys.UI.InformationScreen), true, true);
+            DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Polycom.RMX2000.TranslationManager.UI.InformationScreen), true, true);
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
@@ -157,7 +157,7 @@
             // exitBarButtonItem
             // 
             this.exitBarButtonItem.Caption = "E&xit";
-            this.exitBarButtonItem.Glyph = global::Polycom.RMX2000.EMALostKeys.UI.Properties.Resources.door;
+            this.exitBarButtonItem.Glyph = global::Polycom.RMX2000.TranslationManager.UI.Properties.Resources.door;
             this.exitBarButtonItem.Id = 3;
             this.exitBarButtonItem.Name = "exitBarButtonItem";
             this.exitBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.exitBarButtonItem_ItemClick);
@@ -201,7 +201,7 @@
             // howToUseBarButtonItem
             // 
             this.howToUseBarButtonItem.Caption = "H&ow To Use ...";
-            this.howToUseBarButtonItem.Glyph = global::Polycom.RMX2000.EMALostKeys.UI.Properties.Resources.help;
+            this.howToUseBarButtonItem.Glyph = global::Polycom.RMX2000.TranslationManager.UI.Properties.Resources.help;
             this.howToUseBarButtonItem.Id = 20;
             this.howToUseBarButtonItem.Name = "howToUseBarButtonItem";
             this.howToUseBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.howToUseBarButtonItem_ItemClick);
@@ -209,13 +209,13 @@
             // gitHubBarButtonItem
             // 
             this.gitHubBarButtonItem.Caption = "GitHub ...";
-            this.gitHubBarButtonItem.Glyph = global::Polycom.RMX2000.EMALostKeys.UI.Properties.Resources.GitHub;
+            this.gitHubBarButtonItem.Glyph = global::Polycom.RMX2000.TranslationManager.UI.Properties.Resources.GitHub;
             this.gitHubBarButtonItem.Id = 21;
             this.gitHubBarButtonItem.Name = "gitHubBarButtonItem";
             toolTipTitleItem1.Text = "GitHub";
-            toolTipItem1.Appearance.Image = global::Polycom.RMX2000.EMALostKeys.UI.Properties.Resources.GitHubMedium;
+            toolTipItem1.Appearance.Image = global::Polycom.RMX2000.TranslationManager.UI.Properties.Resources.GitHubMedium;
             toolTipItem1.Appearance.Options.UseImage = true;
-            toolTipItem1.Image = global::Polycom.RMX2000.EMALostKeys.UI.Properties.Resources.GitHubMedium;
+            toolTipItem1.Image = global::Polycom.RMX2000.TranslationManager.UI.Properties.Resources.GitHubMedium;
             toolTipItem1.LeftIndent = 6;
             toolTipItem1.Text = "Get source code from GitHub.";
             superToolTip1.Items.Add(toolTipTitleItem1);
@@ -226,7 +226,7 @@
             // aboutBarButtonItem
             // 
             this.aboutBarButtonItem.Caption = "&About";
-            this.aboutBarButtonItem.Glyph = global::Polycom.RMX2000.EMALostKeys.UI.Properties.Resources.info;
+            this.aboutBarButtonItem.Glyph = global::Polycom.RMX2000.TranslationManager.UI.Properties.Resources.info;
             this.aboutBarButtonItem.Id = 4;
             this.aboutBarButtonItem.Name = "aboutBarButtonItem";
             this.aboutBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.aboutBarButtonItem_ItemClick);
@@ -386,9 +386,9 @@
             this.filePathTextEdit.Properties.ReadOnly = true;
             this.filePathTextEdit.Size = new System.Drawing.Size(563, 20);
             toolTipTitleItem2.Text = "File Path";
-            toolTipItem2.Appearance.Image = global::Polycom.RMX2000.EMALostKeys.UI.Properties.Resources.table;
+            toolTipItem2.Appearance.Image = global::Polycom.RMX2000.TranslationManager.UI.Properties.Resources.table;
             toolTipItem2.Appearance.Options.UseImage = true;
-            toolTipItem2.Image = global::Polycom.RMX2000.EMALostKeys.UI.Properties.Resources.table;
+            toolTipItem2.Image = global::Polycom.RMX2000.TranslationManager.UI.Properties.Resources.table;
             toolTipItem2.LeftIndent = 6;
             toolTipItem2.Text = "Please select translation file in English or EMA UI project file here.";
             superToolTip2.Items.Add(toolTipTitleItem2);
@@ -455,7 +455,7 @@
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(796, 600);
             this.Name = "MainXtraForm";
-            this.Text = "EMA Lost Keys";
+            this.Text = "Translation Manager - Polycom";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainXtraForm_FormClosing);
             this.Load += new System.EventHandler(this.MainXtraForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).EndInit();

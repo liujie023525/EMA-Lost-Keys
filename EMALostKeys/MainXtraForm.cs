@@ -6,10 +6,10 @@ using System.IO;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraTab;
-using Polycom.RMX2000.EMALostKeys.TranslationAnalyzer;
+using Polycom.RMX2000.TranslationManager.TranslationAnalyzer;
 #endregion
 
-namespace Polycom.RMX2000.EMALostKeys.UI
+namespace Polycom.RMX2000.TranslationManager.UI
 {
     public partial class MainXtraForm : DevExpress.XtraEditors.XtraForm
     {
@@ -75,7 +75,7 @@ namespace Polycom.RMX2000.EMALostKeys.UI
         {
             string filePath = this.filePathTextEdit.Text.Trim();
 
-            if (!TranslationManager.ValidateTranslationFile(filePath))
+            if (!TranslateManager.ValidateTranslationFile(filePath))
             {
                 return;
             }
@@ -85,7 +85,7 @@ namespace Polycom.RMX2000.EMALostKeys.UI
 
             foreach (LanguageNames languageName in languageNames)
             {
-                List<string> missingKeys = TranslationManager.GetMissingKeys(filePath, languageName);
+                List<string> missingKeys = TranslateManager.GetMissingKeys(filePath, languageName);
 
                 if (missingKeys != null && missingKeys.Count > 0)
                 {
@@ -222,7 +222,7 @@ namespace Polycom.RMX2000.EMALostKeys.UI
 
                 string filePath = this.saveFileDialog.FileName;
 
-                TranslationManager.Export(this._missingKeyDictionary, filePath);
+                TranslateManager.Export(this._missingKeyDictionary, filePath);
 
                 if (XtraMessageBox.Show("Export succeed, do you want to open it?", "Export", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {

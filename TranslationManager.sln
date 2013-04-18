@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMALostKeys", "EMALostKeys\EMALostKeys.csproj", "{6334042F-8BB7-4727-A804-FCE5DE19CE44}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranslationManager", "EMALostKeys\TranslationManager.csproj", "{6334042F-8BB7-4727-A804-FCE5DE19CE44}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranslationAnalyzer", "TranslationAnalyzer\TranslationAnalyzer.csproj", "{CD09AA7B-DC8C-4C07-962F-DED78DB4D4B3}"
 EndProject

@@ -3,12 +3,12 @@ using System;
 using Microsoft.Win32;
 #endregion
 
-namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
+namespace Polycom.RMX2000.TranslationManager.TranslationAnalyzer 
 {
     public static class RegistryManager
     {
         #region Fields and Properties
-        private static string _productKey = "EMALostKeys";
+        private static string _productKey = "Translation Manager";
         private static string _themeKey = "Theme";
 
         public const string DEFAULT_THEME_NAME = "DevExpress Dark Style";

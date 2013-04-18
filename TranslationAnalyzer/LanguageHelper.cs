@@ -2,7 +2,7 @@
 #endregion
 
 using System;
-namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
+namespace Polycom.RMX2000.TranslationManager.TranslationAnalyzer 
 {
     public enum LanguageNames
     {

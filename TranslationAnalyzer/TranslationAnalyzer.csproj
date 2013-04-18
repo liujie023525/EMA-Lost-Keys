@@ -8,7 +8,7 @@
     <ProjectGuid>{CD09AA7B-DC8C-4C07-962F-DED78DB4D4B3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Polycom.RMX2000.EMALostKeys.TranslationAnalyzer</RootNamespace>
+    <RootNamespace>Polycom.RMX2000.TranslationManager.TranslationAnalyzer</RootNamespace>
     <AssemblyName>TranslationAnalyzer</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -46,7 +46,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistryManager.cs" />
     <Compile Include="TranslationException.cs" />
-    <Compile Include="TranslationManager.cs" />
+    <Compile Include="TranslateManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

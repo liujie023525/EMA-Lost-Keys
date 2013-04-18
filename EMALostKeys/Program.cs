@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using DevExpress.Skins;
 #endregion
 
-namespace Polycom.RMX2000.EMALostKeys.UI
+namespace Polycom.RMX2000.TranslationManager.UI
 {
     static class Program
     {

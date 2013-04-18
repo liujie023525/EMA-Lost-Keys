@@ -5,9 +5,9 @@ using System.IO;
 using System.Xml;
 #endregion
 
-namespace Polycom.RMX2000.EMALostKeys.TranslationAnalyzer
+namespace Polycom.RMX2000.TranslationManager.TranslationAnalyzer 
 {
-    public static class TranslationManager
+    public static class TranslateManager
     {
         #region Fields and Properties
         public static readonly string[] TranslationNodeKeyLevels = new string[] { "StringConfiguration", "Translations", "Language", "String" };
