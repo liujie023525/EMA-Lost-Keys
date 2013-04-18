@@ -145,6 +145,7 @@
             this.mainToolBar.OptionsBar.DrawDragBorder = false;
             this.mainToolBar.OptionsBar.MultiLine = true;
             this.mainToolBar.OptionsBar.UseWholeRow = true;
+            this.mainToolBar.Text = "Custom 2";
             // 
             // fileBarSubItem
             // 
