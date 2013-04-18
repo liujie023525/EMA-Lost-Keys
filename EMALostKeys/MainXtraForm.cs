@@ -14,7 +14,7 @@ namespace Polycom.RMX2000.TranslationManager.UI
     public partial class MainXtraForm : DevExpress.XtraEditors.XtraForm
     {
         #region Fields and Properties
-        private Dictionary<string, List<string>> _missingKeyDictionary = null;
+        private Dictionary<string, List<string>> _outputKeyDictionary = null;
         private bool _isProcessing = false;
         private AnalyzeModes _currentAnalyzeMode;
         #endregion
@@ -49,7 +49,7 @@ namespace Polycom.RMX2000.TranslationManager.UI
                     return;
                 }
 
-                this._missingKeyDictionary = new Dictionary<string, List<string>>();
+                this._outputKeyDictionary = new Dictionary<string, List<string>>();
 
                 List<String> missingKeys = null;
 
@@ -59,7 +59,7 @@ namespace Polycom.RMX2000.TranslationManager.UI
 
                     if (missingKeys != null && missingKeys.Count > 0)
                     {
-                        this._missingKeyDictionary.Add(new FileInfo(csFile).Name, missingKeys);
+                        this._outputKeyDictionary.Add(new FileInfo(csFile).Name, missingKeys);
                     }
                 }
 
@@ -73,27 +73,69 @@ namespace Polycom.RMX2000.TranslationManager.UI
 
         private void AnalyzeTranslationFile()
         {
-            string filePath = this.filePathTextEdit.Text.Trim();
-
-            if (!TranslateManager.ValidateTranslationFile(filePath))
+            try
             {
-                return;
-            }
+                string filePath = this.filePathTextEdit.Text.Trim();
 
-            Array languageNames = Enum.GetValues(typeof(LanguageNames));
-            this._missingKeyDictionary = new Dictionary<string, List<string>>();
-
-            foreach (LanguageNames languageName in languageNames)
-            {
-                List<string> missingKeys = TranslateManager.GetMissingKeys(filePath, languageName);
-
-                if (missingKeys != null && missingKeys.Count > 0)
+                if (!TranslateManager.ValidateTranslationFile(filePath))
                 {
-                    this._missingKeyDictionary.Add(languageName.ToString(), missingKeys);
+                    return;
                 }
-            }
 
-            this.OutputSearchResult();
+                Array languageNames = Enum.GetValues(typeof(LanguageNames));
+                this._outputKeyDictionary = new Dictionary<string, List<string>>();
+
+                foreach (LanguageNames languageName in languageNames)
+                {
+                    List<string> missingKeys = TranslateManager.GetMissingKeys(filePath, languageName);
+
+                    if (missingKeys != null && missingKeys.Count > 0)
+                    {
+                        this._outputKeyDictionary.Add(languageName.ToString(), missingKeys);
+                    }
+                }
+
+                this.OutputSearchResult();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void AnalyzeDuplicateKeys()
+        {
+            try
+            {
+                string filePath = this.filePathTextEdit.Text.Trim();
+
+                List<string> xmlFiles = SolutionManager.GetXmlFiles(filePath);
+
+                if (xmlFiles == null || xmlFiles.Count == 0)
+                {
+                    return;
+                }
+
+                this._outputKeyDictionary = new Dictionary<string, List<string>>();
+
+                List<String> duplicatedKeys = null;
+
+                foreach (string xmlFile in xmlFiles)
+                {
+                    duplicatedKeys = SolutionManager.GetDuplicatedKeys(xmlFile);
+
+                    if (duplicatedKeys != null && duplicatedKeys.Count > 0)
+                    {
+                        this._outputKeyDictionary.Add(new FileInfo(xmlFile).Name, duplicatedKeys);
+                    }
+                }
+
+                this.OutputSearchResult();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void OutputSearchResult()
@@ -101,11 +143,11 @@ namespace Polycom.RMX2000.TranslationManager.UI
             this.resultXtraTabControl.SuspendLayout();
             this.resultXtraTabControl.TabPages.Clear();
 
-            if (this._missingKeyDictionary != null && this._missingKeyDictionary.Count > 0)
+            if (this._outputKeyDictionary != null && this._outputKeyDictionary.Count > 0)
             {
                 this.exportResultSimpleButton.Enabled = true;
 
-                foreach (KeyValuePair<string, List<string>> missingKeys in this._missingKeyDictionary)
+                foreach (KeyValuePair<string, List<string>> missingKeys in this._outputKeyDictionary)
                 {
                     XtraTabPage tabPage = new XtraTabPage() { Text = LanguageHelper.GetLanguageDisplayName(missingKeys.Key) };
 
@@ -120,7 +162,14 @@ namespace Polycom.RMX2000.TranslationManager.UI
             {
                 this.exportResultSimpleButton.Enabled = false;
 
-                XtraMessageBox.Show("Great! No key is lost!");
+                if (this._currentAnalyzeMode != AnalyzeModes.Solution)
+                {
+                    XtraMessageBox.Show("Great! No key is lost!");
+                }
+                else
+                {
+                    XtraMessageBox.Show("Great! No duplicated keys here!");
+                }
             }
 
             this.resultXtraTabControl.ResumeLayout(false);
@@ -175,6 +224,10 @@ namespace Polycom.RMX2000.TranslationManager.UI
                     ProjectManager.InitializeEnglishKeys(fullName);
                     ProjectManager.InitializeAllowedKeys(fullName);
                 }
+                else if (fileExtension.Equals(".sln", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    this._currentAnalyzeMode = AnalyzeModes.Solution;
+                }
             }
             catch (Exception ex)
             {
@@ -195,6 +248,9 @@ namespace Polycom.RMX2000.TranslationManager.UI
                         break;
                     case AnalyzeModes.UIProject:
                         this.AnalyzeUIProject();
+                        break;
+                    case AnalyzeModes.Solution:
+                        this.AnalyzeDuplicateKeys();
                         break;
                 }
             }
@@ -222,7 +278,7 @@ namespace Polycom.RMX2000.TranslationManager.UI
 
                 string filePath = this.saveFileDialog.FileName;
 
-                TranslateManager.Export(this._missingKeyDictionary, filePath);
+                TranslateManager.Export(this._outputKeyDictionary, filePath);
 
                 if (XtraMessageBox.Show("Export succeed, do you want to open it?", "Export", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {

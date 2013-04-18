@@ -5,7 +5,7 @@ using System.IO;
 using System.Xml;
 #endregion
 
-namespace Polycom.RMX2000.TranslationManager.TranslationAnalyzer 
+namespace Polycom.RMX2000.TranslationManager.TranslationAnalyzer
 {
     public static class ProjectManager
     {

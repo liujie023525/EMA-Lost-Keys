@@ -5,7 +5,7 @@ using System.IO;
 using System.Xml;
 #endregion
 
-namespace Polycom.RMX2000.TranslationManager.TranslationAnalyzer 
+namespace Polycom.RMX2000.TranslationManager.TranslationAnalyzer
 {
     public static class TranslateManager
     {
@@ -142,7 +142,7 @@ namespace Polycom.RMX2000.TranslationManager.TranslationAnalyzer
                         && reader.AttributeCount == 2
                         && !String.IsNullOrEmpty(reader[0]))
                     {
-                        keys.Add(reader[0].Trim());
+                        keys.Add(reader[0]);
                     }
                 }
 

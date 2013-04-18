@@ -2,7 +2,7 @@
 #endregion
 
 using System;
-namespace Polycom.RMX2000.TranslationManager.TranslationAnalyzer 
+namespace Polycom.RMX2000.TranslationManager.TranslationAnalyzer
 {
     public enum LanguageNames
     {
@@ -24,7 +24,8 @@ namespace Polycom.RMX2000.TranslationManager.TranslationAnalyzer
     public enum AnalyzeModes
     {
         TranslationFile = 0,
-        UIProject
+        UIProject,
+        Solution
     }
 
     public static class LanguageHelper

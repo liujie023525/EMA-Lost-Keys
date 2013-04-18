@@ -428,7 +428,7 @@
             // 
             // openFileDialog
             // 
-            this.openFileDialog.Filter = "UI Project|*.csproj|XML File|*.xml";
+            this.openFileDialog.Filter = "UI Project|*.csproj|XML File|*.xml|Solution|*.sln";
             this.openFileDialog.FilterIndex = 0;
             this.openFileDialog.ReadOnlyChecked = true;
             this.openFileDialog.Title = "Select ...";
